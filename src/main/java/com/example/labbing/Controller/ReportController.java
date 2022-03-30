@@ -30,7 +30,7 @@ public class ReportController {
     }
 
     @GetMapping("/addnew")
-    public String addPatiend(Model model) {
+    public String addPatient(Model model) {
         Report report = new Report();
         model.addAttribute("report", report);
         return "index";
