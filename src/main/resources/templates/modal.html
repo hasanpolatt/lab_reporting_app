@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/hospital/saveReport}" th:object="${report}" method="POST">
+
+    <input type="text" th:field="*{patient_name_surname}" class="form-control mx-auto mb-4"  placeholder="Enter Name" />
+
+    <input type="text" th:field="*{patient_tc_id}" class="form-control mx-auto mb-4"  placeholder="Enter tc" />
+
+    <input type="text" th:field="*{diagnosis_title}" class="form-control mx-auto  mb-4"  placeholder="Enter title" />
+    <input type="text" th:field="*{diagnosis_details}" class="form-control  mx-auto  mb-4"  placeholder="Enter detail" />
+
+
+    <button type="submit" class="btn btn-primary col-2">Save</button>
+    <input type="hidden" th:field="*{id}" />
+</form>
+</body>
+</html>
