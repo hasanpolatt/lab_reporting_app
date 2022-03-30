@@ -2,15 +2,11 @@ package com.example.labbing.Controller;
 
 import com.example.labbing.Model.Report;
 import com.example.labbing.Service.ReportService;
-import com.example.labbing.Repository.ReportRepository;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/hospital")
@@ -23,25 +19,25 @@ public class ReportController {
 
 
     @GetMapping("/listReports")
-    public String listPatient(Model model) {
+    public ModelAndView listStudent(Model model) {
+        ModelAndView mav = new ModelAndView("index");
         List<Report> reports = reportService.findAllReports();
-        model.addAttribute("reports", reports);
-        return "index";
+        System.out.println(reports.toArray().length);
+        mav.addObject("reports", reports);
+        mav.addObject("report", new Report());
+        return mav;
     }
 
-    @GetMapping("/addnew")
-    public String addPatient(Model model) {
-        Report report = new Report();
-        model.addAttribute("report", report);
-        return "index";
-    }
-
-    @PostMapping("/add")
-    public String addPatient(@ModelAttribute("report") Report report) {
+    @PostMapping("/saveReport")
+    public String saveReport(@ModelAttribute Report report) {
         reportService.addReport(report);
-        return "index";
+        return "redirect:../hospital/listReports";
     }
 
-
+    @PutMapping("/updateReport")
+    public String updateReport(@ModelAttribute Report report) {
+        reportService.updateReport(report);
+        return "redirect:../hospital/listReports";
+    }
 
 }
