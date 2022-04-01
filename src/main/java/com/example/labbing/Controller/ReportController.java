@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
 import java.util.List;
 
 @Controller
@@ -40,4 +41,18 @@ public class ReportController {
         return "redirect:../hospital/listReports";
     }
 
+    @GetMapping("/report/{id}")
+    public String showUpdateForm(@PathVariable("id") long id, Model model) {
+        Report report = reportService.findReportById(id);
+
+        model.addAttribute("report", report);
+        return "modal";
+    }
+
+    @GetMapping("/deleteEmployee/{id}")
+    public String deleteThroughId(@PathVariable long id) {
+        reportService.deleteReport(id);
+        return "redirect:../listReports";
+
+    }
 }

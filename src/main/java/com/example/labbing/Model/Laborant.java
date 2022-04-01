@@ -17,7 +17,7 @@ public class Laborant implements Serializable {
     private String name;
     private String surname;
     private String hospital_id;
-    @OneToMany(mappedBy="laborant")
+    @OneToMany(mappedBy = "laborant")
     private List<Report> reports;
 
 
