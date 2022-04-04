@@ -10,7 +10,7 @@
 </head>
 <body>
 <form method="POST" th:action="@{/hospital/saveReport}" th:object="${report}">
-
+    &nbsp;
     <input class="form-control mx-auto mb-4" placeholder="Enter Name" th:field="*{patient_name_surname}" type="text"/>
 
     <input class="form-control mx-auto mb-4" placeholder="Enter tc" th:field="*{patient_tc_id}" type="text"/>
