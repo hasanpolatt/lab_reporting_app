@@ -21,5 +21,4 @@ public class Report implements Serializable {
     private Date report_date;
     @ManyToOne(fetch = FetchType.LAZY)
     private Laborant laborant;
-
 }

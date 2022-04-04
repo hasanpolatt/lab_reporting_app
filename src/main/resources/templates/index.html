@@ -5,29 +5,27 @@
     <meta charset="UTF-8"/>
     <title>Loop</title>
 
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" rel="stylesheet">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" th:href="@{listReports}">Labbing</a>
-    <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
-            data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" th:href="@{listReports}">Labbing</a>
+        <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+                data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" data-target="#ex1ampleModal" data-toggle="modal">Add Report</a>
-            </li>
-        </ul>
-
-    </div>
-</nav>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" data-target="#ex1ampleModal" data-toggle="modal">Add Report</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 <table class="table table-bordered">
     <caption>List of users</caption>
     <thead>
@@ -38,13 +36,11 @@
         <th scope="col">Diagnoses</th>
         <th scope="col">Detail</th>
         <th scope="col">Date</th>
-
     </tr>
     </thead>
     <tbody>
 
     <th:block th:each="report : ${reports}">
-
         <tr>
             <th scope="row" th:text="${report.getId()}">1</th>
             <td th:text="${report.getPatient_tc_id()}"></td>
@@ -53,8 +49,8 @@
             <td th:text="${report.getDiagnosis_details()}"></td>
             <td th:text="${report.getReport_date()}"></td>
             <td>
-                <button class="btn btn-primary" data-target="#exampleModal" data-toggle="modal" type="button"><i
-                        class="far fa-eye"></i></button>
+                <a class="btn btn-primary" th:href="@{/hospital/reviewReport/{id}(id=${report.getId()})}" ><i
+                        class="far fa-eye"></i> </a>
                 <a class="btn btn-success" th:href="@{/hospital/report/{id}(id=${report.getId()})}"><i
                         class="fas fa-edit"></i></a>
                 <a class="btn btn-danger" th:href="@{/hospital/deleteEmployee/{id}(id=${report.getId()})}"><i
@@ -62,8 +58,6 @@
             </td>
         </tr>
     </th:block>
-
-
     </tbody>
 </table>
 <!-- Modal -->
@@ -91,7 +85,6 @@
                     <input class="form-control  mx-auto  mb-4" placeholder="Enter detail" th:field="*{diagnosis_details}"
                            type="text"/>
 
-
                     <button class="btn btn-primary col-2" type="submit">Save</button>
                     <input th:field="*{id}" type="hidden"/>
                 </form>
@@ -113,7 +106,6 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
 <scripts>
-
 
 </scripts>
 </body>

@@ -44,7 +44,6 @@ public class ReportController {
     @GetMapping("/report/{id}")
     public String showUpdateForm(@PathVariable("id") long id, Model model) {
         Report report = reportService.findReportById(id);
-
         model.addAttribute("report", report);
         return "modal";
     }
@@ -53,6 +52,12 @@ public class ReportController {
     public String deleteThroughId(@PathVariable long id) {
         reportService.deleteReport(id);
         return "redirect:../listReports";
+    }
 
+    @GetMapping("/reviewReport/{id}")
+    public String reviewReport(@PathVariable("id") long id, Model model) {
+        Report report = reportService.findReportById(id);
+        model.addAttribute("report", report);
+        return "review";
     }
 }
