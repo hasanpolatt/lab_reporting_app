@@ -12,7 +12,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" th:href="@{listReports}">Labbing</a>
+        <a class="navbar-brand" th:href="@{listReports/ASC}">Labbing</a>
         <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
                 data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
             <span class="navbar-toggler-icon"></span>
@@ -35,7 +35,8 @@
         <th scope="col">Name</th>
         <th scope="col">Diagnoses</th>
         <th scope="col">Detail</th>
-        <th scope="col">Date</th>
+        <th scope="col">Date<a style="float: right" class="nav-link" th:href="@{/hospital/listReports/DESC}" >desc</a><a style="float: right" class="nav-link" th:href="@{/hospital/listReports/ASC}" >asc</a></th>
+        <!--<th scope="col"><a class="nav-link" th:href="@{/hospital/listReports/ASC}" >asc</a></th> -->
     </tr>
     </thead>
     <tbody>
@@ -49,8 +50,8 @@
             <td th:text="${report.getDiagnosis_details()}"></td>
             <td th:text="${report.getReport_date()}"></td>
             <td>
-                <a class="btn btn-primary" th:href="@{/hospital/reviewReport/{id}(id=${report.getId()})}" ><i
-                        class="far fa-eye"></i> </a>
+                <a class="btn btn-primary" th:href="@{/hospital/reviewReport/{id}(id=${report.getId()})}"><i
+                        class="far fa-eye"></i></a>
                 <a class="btn btn-success" th:href="@{/hospital/report/{id}(id=${report.getId()})}"><i
                         class="fas fa-edit"></i></a>
                 <a class="btn btn-danger" th:href="@{/hospital/deleteEmployee/{id}(id=${report.getId()})}"><i

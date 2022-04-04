@@ -1,6 +1,7 @@
 package com.example.labbing.Controller;
 
 import com.example.labbing.Model.Report;
+import com.example.labbing.Model.SortBy;
 import com.example.labbing.Service.ReportService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,10 +20,10 @@ public class ReportController {
     }
 
 
-    @GetMapping("/listReports")
-    public ModelAndView listStudent(Model model) {
+    @GetMapping("/listReports/{sortBy}")
+    public ModelAndView listReports(@PathVariable SortBy sortBy) {
         ModelAndView mav = new ModelAndView("index");
-        List<Report> reports = reportService.findAllReports();
+        List<Report> reports = reportService.findAllReports(sortBy);
         System.out.println(reports.toArray().length);
         mav.addObject("reports", reports);
         mav.addObject("report", new Report());
@@ -32,13 +33,13 @@ public class ReportController {
     @PostMapping("/saveReport")
     public String saveReport(@ModelAttribute Report report) {
         reportService.addReport(report);
-        return "redirect:../hospital/listReports";
+        return "redirect:../hospital/listReports/DESC";
     }
 
     @PutMapping("/updateReport")
     public String updateReport(@ModelAttribute Report report) {
         reportService.updateReport(report);
-        return "redirect:../hospital/listReports";
+        return "redirect:../hospital/listReports/DESC";
     }
 
     @GetMapping("/report/{id}")
@@ -60,4 +61,6 @@ public class ReportController {
         model.addAttribute("report", report);
         return "review";
     }
+
+
 }

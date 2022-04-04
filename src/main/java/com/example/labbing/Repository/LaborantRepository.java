@@ -10,5 +10,4 @@ import java.util.Optional;
 @Repository
 public interface LaborantRepository extends JpaRepository<Laborant, Long> {
     Optional<List<Laborant>> findByNameAndSurname(String name, String surname);
-
 }
