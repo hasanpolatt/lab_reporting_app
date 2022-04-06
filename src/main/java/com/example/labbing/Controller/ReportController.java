@@ -19,7 +19,6 @@ public class ReportController {
         this.reportService = reportService;
     }
 
-
     @GetMapping("/listReports/{sortBy}")
     public ModelAndView listReports(@PathVariable SortBy sortBy) {
         ModelAndView mav = new ModelAndView("index");
@@ -36,23 +35,17 @@ public class ReportController {
         return "redirect:../hospital/listReports/DESC";
     }
 
-    @PutMapping("/updateReport")
-    public String updateReport(@ModelAttribute Report report) {
-        reportService.updateReport(report);
-        return "redirect:../hospital/listReports/DESC";
-    }
-
-    @GetMapping("/report/{id}")
+    @GetMapping("/updateReport/{id}")
     public String showUpdateForm(@PathVariable("id") long id, Model model) {
         Report report = reportService.findReportById(id);
         model.addAttribute("report", report);
         return "modal";
     }
 
-    @GetMapping("/deleteEmployee/{id}")
-    public String deleteThroughId(@PathVariable long id) {
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable long id) {
         reportService.deleteReport(id);
-        return "redirect:../listReports";
+        return "redirect:../listReports/DESC";
     }
 
     @GetMapping("/reviewReport/{id}")
@@ -61,6 +54,4 @@ public class ReportController {
         model.addAttribute("report", report);
         return "review";
     }
-
-
 }

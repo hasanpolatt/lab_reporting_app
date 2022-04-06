@@ -19,24 +19,21 @@ public class LabbingApplication {
         ReportRepository r_repo = configurableApplicationContext.getBean(ReportRepository.class);
 
         Report report = new Report();
-        report.setReport_date(new Date());
-        report.setPatient_tc_id("12345678901");
-        report.setPatient_name_surname("Ali Ayşe");
-        report.setReport_no("1234567");
-        report.setDiagnosis_title("Cold");
-        report.setDiagnosis_details("Had a cold");
+        report.setReportDate(new Date());
+        report.setPatientTC("12345678901");
+        report.setPatientName("Ali Ayşe");
+        report.setReportNo("1234567");
+        report.setDiagnosis("Cold");
+        report.setDiagnosisDetails("Had a cold");
         r_repo.save(report);
 
         report = new Report();
-        report.setReport_date(new Date());
-        report.setPatient_tc_id("12345678902");
-        report.setPatient_name_surname("James Bond");
-        report.setReport_no("2345678");
-        report.setDiagnosis_title("Covid-19");
-        report.setDiagnosis_details("Covid-19 is over");
+        report.setReportDate(new Date());
+        report.setPatientTC("12345678902");
+        report.setPatientName("James Bond");
+        report.setReportNo("2345678");
+        report.setDiagnosis("Covid-19");
+        report.setDiagnosisDetails("Covid-19 is over");
         r_repo.save(report);
-
-
     }
-
 }

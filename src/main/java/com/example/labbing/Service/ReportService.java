@@ -29,7 +29,7 @@ public class ReportService {
 
         LocalDateTime localDateTime = LocalDateTime.now();
         Date date2 = Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
-        report.setReport_date(date2);
+        report.setReportDate(date2);
         return reportRepository.save(report);
     }
 
@@ -37,11 +37,11 @@ public class ReportService {
         switch (sortBy) {
             case ASC:
                 return reportRepository.findAll().stream()
-                        .sorted(Comparator.comparing(Report::getReport_date))
+                        .sorted(Comparator.comparing(Report::getReportDate))
                         .collect(Collectors.toList());
             case DESC:
                 List<Report> asd = reportRepository.findAll().stream()
-                        .sorted(Comparator.comparing(Report::getReport_date))
+                        .sorted(Comparator.comparing(Report::getReportDate))
                         .collect(Collectors.toList());
                 Collections.reverse(asd);
                 return asd;
@@ -65,6 +65,4 @@ public class ReportService {
         Report report = reportRepository.findById(id).get();
         return report;
     }
-
-
 }

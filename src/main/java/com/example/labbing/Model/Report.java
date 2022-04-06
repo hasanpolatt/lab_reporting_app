@@ -13,12 +13,13 @@ public class Report implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String report_no;
-    private String patient_name_surname;
-    private String patient_tc_id;
-    private String diagnosis_title;
-    private String diagnosis_details;
-    private Date report_date;
+    private String reportNo;
+    private String patientName;
+    private String patientTC;
+    private String diagnosis;
+    private String diagnosisDetails;
+    private Date reportDate;
     @ManyToOne(fetch = FetchType.LAZY)
     private Laborant laborant;
+    private String photos;
 }
